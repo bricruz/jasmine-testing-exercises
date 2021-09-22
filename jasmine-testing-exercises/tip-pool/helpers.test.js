@@ -20,6 +20,19 @@ describe("Helpers test (with setup and tear-down)", function () {
         expect(sumPaymentTotal('billAmt')).toEqual(30);
 
     });
+    it('Should sum total of tipPercent', function () {
+        expect(sumPaymentTotal('tipPercent')).toEqual(20);
+
+
+        billAmtInput.value = 20;
+        tipAmtInput.value = 4;
+
+        submitPaymentInfo();
+
+        expect(sumPaymentTotal('tipPercent')).toEqual(40);
+
+
+    });
 
     it('Should calculate tip percentage', function () {
 
@@ -28,7 +41,12 @@ describe("Helpers test (with setup and tear-down)", function () {
         //Why when I pass in billAmt and tipAmt calculateTipPercent returns NaN??
     })
 
-
+    it('Should create new TD from value and append to tr', function () {
+        let thisTr = document.createElement('tr');
+        appendTd(thisTr, 'something');
+        expect(thisTr.children.length).toEqual(1);
+        expect(thisTr.firstChild.innerHTML).toEqual('something');
+    })
 
     afterEach(function () {
         billAmtInput.value = '';
