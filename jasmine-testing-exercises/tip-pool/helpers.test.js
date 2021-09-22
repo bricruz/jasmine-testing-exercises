@@ -47,6 +47,14 @@ describe("Helpers test (with setup and tear-down)", function () {
         expect(thisTr.children.length).toEqual(1);
         expect(thisTr.firstChild.innerHTML).toEqual('something');
     })
+    it('should generate delete td and append to tr on appendDeleteBtn(tr, type)', function () {
+        let newTr = document.createElement('tr');
+
+        appendDeleteBtn(newTr);
+
+        expect(newTr.children.length).toEqual(1);
+        expect(newTr.firstChild.innerHTML).toEqual('X');
+    });
 
     afterEach(function () {
         billAmtInput.value = '';
